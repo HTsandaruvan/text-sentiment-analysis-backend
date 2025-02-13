@@ -10,9 +10,9 @@ const Sentiment = require("../models/Sentiment");
  */
 const axios = require("axios"); // Import axios to make API requests
 
+require("dotenv").config();
 
-// Flask API URL
-const FLASK_API_URL = "http://127.0.0.1:5001/predict"; // Change to Render URL after deployment
+
 
 
 exports.analyzeSentiment = async (req, res) => {
@@ -25,7 +25,7 @@ exports.analyzeSentiment = async (req, res) => {
         }
 
         // ✅ Send request to Flask API
-        const flaskResponse = await axios.post(FLASK_API_URL, { text });
+        const flaskResponse = await axios.post(process.env.FLASK_API_URL, { text });
 
         console.log("✅ Flask Response:", flaskResponse.data); // Debug API response
 
