@@ -1,0 +1,15 @@
+# Ignore Python Virtual Environment
+flask_api/venv/
+flask_api/__pycache__/
+flask_api/*.pyc
+
+# Ignore Node.js dependencies
+node_modules/
+package-lock.json
+
+# Ignore environment variables
+.env
+
+# Ignore system files
+.DS_Store
+Thumbs.db
