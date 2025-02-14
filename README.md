@@ -19,6 +19,8 @@ This is the **backend API** for the **Text Sentiment Analysis** project. It hand
 ✅ Communicates with a Flask ML API for text analysis.  
 ✅ Role-based authentication (Admin/User).  
 ✅ Admin can view all users’ sentiment history.  
+✅ Admin can manage users and sentiment anlyzing.
+
 
 ---
 
@@ -28,7 +30,6 @@ This is the **backend API** for the **Text Sentiment Analysis** project. It hand
 - **MongoDB Atlas** – NoSQL cloud database  
 - **Mongoose** – ODM for MongoDB  
 - **JWT (JSON Web Tokens)** – Secure authentication  
-- **Nodemailer** – Email notifications  
 
 ---
 
@@ -37,7 +38,7 @@ This is the **backend API** for the **Text Sentiment Analysis** project. It hand
 
 ```
 text-sentiment-analysis-backend/
-│── flask-api/  (Sentiment analysis model)
+│── flask-api/   # (Sentiment analysis model)
 │── src/
 │   ├── config/
 │   ├── controllers/
@@ -57,7 +58,7 @@ text-sentiment-analysis-backend/
 
 ```sh
 git clone https://github.com/HTsandaruvan/sentiment-analysis-project.git
-cd sentiment-analysis-project/backend
+cd sentiment-analysis-backend
 ```
 
 ### Step 2: Install Dependencies
