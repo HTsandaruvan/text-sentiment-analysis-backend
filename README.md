@@ -32,8 +32,10 @@ This is the **backend API** for the **Text Sentiment Analysis** project. It hand
 
 ---
 
+
 ## **Project Structure**
 
+```
 text-sentiment-analysis-backend/
 │── flask-api/  (Sentiment analysis model)
 │── src/
@@ -48,6 +50,7 @@ text-sentiment-analysis-backend/
 │── .gitignore
 │── package.json
 
+```
 ## **Setup and Installation**
 
 ### **Step 1: Clone the Repository**
