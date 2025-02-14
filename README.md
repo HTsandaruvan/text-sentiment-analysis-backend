@@ -64,7 +64,8 @@ FLASK_API_URL=http://127.0.0.1:5001/predict
 EMAIL_USER=your-email@gmail.com
 EMAIL_PASS=your-email-password
 Step 4: Run the Backend Server
-sh
+
+```sh
 Copy
 npm start
 The API will run at http://localhost:5000.
