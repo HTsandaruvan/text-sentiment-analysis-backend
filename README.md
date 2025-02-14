@@ -37,37 +37,39 @@ This is the **backend API** for the **Text Sentiment Analysis** project. It hand
 ## **Project Structure**
 📂 sentiment-analysis-project ├── 📂 backend │ ├── 📂 flask-api # Flask ML model & API │ │ ├── app.py # Flask API main file │ │ ├── model.pkl # Trained ML model │ │ ├── requirements.txt # Python dependencies │ │ ├── 📂 static # Static files (if any) │ │ ├── 📂 templates # HTML templates (if needed) │ │ │ ├── 📂 node-api # Express.js API │ │ ├── 📂 config # Database & JWT config │ │ ├── 📂 controllers # Business logic │ │ ├── 📂 models # MongoDB schemas │ │ ├── 📂 routes # API endpoints │ │ ├── 📂 middleware # Auth middleware │ │ ├── 📂 utils # Utility functions │ │ ├── .env # Environment variables │ │ ├── package.json # Node dependencies │ │ ├── server.js # API entry point │ │ │ ├── README.md # Backend documentation │ ├── .gitignore # Ignore unnecessary files
 
-yaml
-Copy
-
----
 
 ## **Setup and Installation**
 
 ### **Step 1: Clone the Repository**
+
 ```sh
 git clone https://github.com/HTsandaruvan/sentiment-analysis-project.git
 cd sentiment-analysis-project/backend
-Step 2: Install Dependencies
-sh
-Copy
-npm install
-Step 3: Set Up Environment Variables
+```
+
+### Step 2: Install Dependencies
+
+```sh
+npm instal
+```
+### Step 3: Set Up Environment Variables
 Create a .env file inside backend/ and configure it with your details:
 
-env
-Copy
+```sh
 PORT=5000
 MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/sentiment_db?retryWrites=true&w=majority
 JWT_SECRET=your_jwt_secret
 FLASK_API_URL=http://127.0.0.1:5001/predict
 EMAIL_USER=your-email@gmail.com
 EMAIL_PASS=your-email-password
-Step 4: Run the Backend Server
+
+```
+ ### Step 4: Run the Backend Server
 
 ```sh
-Copy
-npm start
+nodemon src/server.js
+```
+
 The API will run at http://localhost:5000.
 
 Steps to Set Up and Run the Project Locally
