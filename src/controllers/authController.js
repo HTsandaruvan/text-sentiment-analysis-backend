@@ -71,7 +71,7 @@ exports.login = async (req, res) => {
 
         // Generate JWT token with user role
         const token = jwt.sign(
-            { id: user._id, role: user.role, name: user.name }, // Role included in token
+            { id: user._id, role: user.role, name: user.name, profilePicture: user.profilePicture }, // Role included in token
             process.env.JWT_SECRET,
             { expiresIn: "1h" }
         );
@@ -84,6 +84,7 @@ exports.login = async (req, res) => {
                 name: user.name,
                 email: user.email,
                 role: user.role, // Role sent in response
+                profilePicture: user.profilePicture,
             },
         });
     } catch (err) {

@@ -39,15 +39,15 @@ exports.updateProfile = async (req, res) => {
         console.log("📸 Uploaded File:", req.file);
 
         const { name, email, address, contactNumber } = req.body;
-        let profilePicture = req.file ? `/uploads/${req.file.filename}` : req.body.profilePicture;
+        let profilePicture = req.file
+            ? `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}` // ✅ Store full URL
+            : req.body.profilePicture;
 
-        const updatedUser = await User.findByIdAndUpdate(req.user.id, {
-            name,
-            email,
-            address,
-            contactNumber,
-            profilePicture
-        }, { new: true });
+        const updatedUser = await User.findByIdAndUpdate(
+            req.user.id,
+            { name, email, address, contactNumber, profilePicture },
+            { new: true }
+        );
 
         console.log("✅ Updated User:", updatedUser);
 

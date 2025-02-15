@@ -69,18 +69,60 @@ exports.deleteUser = async (req, res) => {
     }
 };
 
+/**
+ * @desc Update user details (Admin Only)
+ * @route PUT /api/admin/user/:userId
+ * @access Private (Admin)
+ */
+exports.updateUserDetails = async (req, res) => {
+    try {
+        const { name, email, role } = req.body;
+        const updatedUser = await User.findByIdAndUpdate(
+            req.params.userId,
+            { name, email, role },
+            { new: true, runValidators: true }
+        );
 
-// /**
-//  * @desc Update user data (Admin Only)
-//  * @route PUT /api/admin/user/:userId
-//  * @access Private (Admin)
-//  */
-// exports.updateUserData = async (req, res) => {
-//     try {
-//         const { name, email } = req.body;
-//         const updatedUser = await User.findByIdAndUpdate(req.params.userId, { name, email }, { new: true });
-//         res.json({ message: "User updated successfully", user: updatedUser });
-//     } catch (err) {
-//         res.status(500).json({ message: "Server Error" });
-//     }
-// };
+        if (!updatedUser) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.json({ message: "User details updated successfully", user: updatedUser });
+    } catch (err) {
+        console.error("❌ Error updating user:", err);
+        res.status(500).json({ message: "Server Error", error: err.message });
+    }
+};
+
+
+/**
+ * @desc Admin can add a new user
+ * @route POST /api/admin/user
+ * @access Private (Admin Only)
+ */
+exports.createUser = async (req, res) => {
+    try {
+        const { name, email, password, role } = req.body;
+
+        // Check if email already exists
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ message: "User with this email already exists" });
+        }
+
+        // Create new user
+        const newUser = new User({
+            name,
+            email,
+            password, // Assume bcrypt is used in User model pre-save middleware
+            role,
+        });
+
+        await newUser.save();
+
+        res.status(201).json({ message: "User created successfully", user: newUser });
+    } catch (error) {
+        console.error("❌ Error creating user:", error);
+        res.status(500).json({ message: "Server Error", error: error.message });
+    }
+};
